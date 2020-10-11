@@ -3,7 +3,7 @@ package com.herb.lib.api.model;
 import com.herb.lib.api.enums.ValidFlagEnum;
 import lombok.Data;
 
-import java.util.Date;
+import java.sql.Date;
 
 /**
  * 实体类父类
@@ -27,7 +27,7 @@ public class BaseDTO {
     /**
      * 临时字段2
      */
-    private  String tm2;
+    private  String tmp2;
 
     /**
      * 入库时间
