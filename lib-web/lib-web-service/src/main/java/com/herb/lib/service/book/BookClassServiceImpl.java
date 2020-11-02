@@ -1,9 +1,9 @@
-package com.herb.lib.service;
+package com.herb.lib.service.book;
 
 import com.herb.lib.api.constants.ResultDTO;
 import com.herb.lib.api.enums.HttpCode;
 import com.herb.lib.api.model.book.BookClassDTO;
-import com.herb.lib.api.service.BookClassService;
+import com.herb.lib.api.service.book.BookClassService;
 import com.herb.lib.dao.mapper.book.BookClassMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
