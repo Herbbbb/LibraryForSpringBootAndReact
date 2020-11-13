@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.herb.lib.dao.mapper.book.BookClassMapper">
+
+    <resultMap id="BookClassDTO" type="com.herb.lib.api.model.book.BookClassDTO">
+        <id column="id" property="id" />
+        <result column="name" property="name"/>
+        <result column="tmp1" property="tmp1"/>
+        <result column="tmp2" property="tmp2"/>
+        <result column="create_date" property="createDate"/>
+        <result column="update_date" property="updateDate"/>
+        <result column="valid_flag" property="validFlag"/>
+    </resultMap>
+
+    <sql id="base_column">
+        id, name, tmp1,tmp2,create_date,update_date,valid_flag
+    </sql>
+
+    <select id="findListByName" resultMap="BookClassDTO">
+        SELECT
+        <include refid="base_column" />
+         FROM book_class where name like '${name}%'
+        AND valid_flag='ENABLE'
+    </select>
+
+    <select id="findById" resultMap="BookClassDTO">
+        SELECT
+        <include refid="base_column" />
+        FROM book_class where id=#{id}
+        AND valid_flag='ENABLE'
+    </select>
+
+    <insert id="insert">
+        INSERT INTO book_class(name, valid_flag) values (#{name}, #{validFlag})
+    </insert>
+
+    <update id="update">
+        UPDATE book_class set name=#{name} where id=#{id}
+    </update>
+
+    <delete id="delete">
+        UPDATE book_class set valid_flag='DISABLE' where id=#{id}
+    </delete>
+</mapper>

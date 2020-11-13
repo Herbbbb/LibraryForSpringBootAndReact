@@ -1,6 +1,7 @@
 package com.herb.lib.api.model.book;
 
 import com.herb.lib.api.model.BaseDTO;
+import lombok.Data;
 
 import java.io.Serializable;
 
@@ -10,6 +11,7 @@ import java.io.Serializable;
  * @version 1.0
  * @date 2020/10/9 20:56
  */
+@Data
 public class BookClassDTO extends BaseDTO implements Serializable{
 
     private static final long serialVersionUID = 6109911930620603904L;
