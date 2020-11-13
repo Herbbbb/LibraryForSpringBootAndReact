@@ -70,6 +70,9 @@ public class BookServiceImpl implements BookService {
         if(StringUtils.isEmpty(entity.getBookClassId())) {
             return new ResultDTO(HttpCode.FAIL.getCode(), "书籍分类编号不能为空");
         }
+        if(0 == entity.getBookCount()) {
+            return new ResultDTO(HttpCode.FAIL.getCode(), "书籍数量不能小于0");
+        }
         int influenceNumber = bookMapper.insert(entity);
         if(influenceNumber <= 0) {
             // 新增失败

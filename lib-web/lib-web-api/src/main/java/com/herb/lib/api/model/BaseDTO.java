@@ -3,7 +3,7 @@ package com.herb.lib.api.model;
 import com.herb.lib.api.enums.ValidFlagEnum;
 import lombok.Data;
 
-import java.sql.Date;
+import java.util.Date;
 
 /**
  * 实体类父类

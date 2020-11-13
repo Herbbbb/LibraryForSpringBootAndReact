@@ -7,6 +7,7 @@
         <result column="book_name" property="bookName"/>
         <result column="book_class_id" property="bookClassId"/>
         <result column="book_price" property="bookPrice"/>
+        <result column="book_count" property="bookCount"/>
         <result column="book_publish" property="bookPublish"/>
         <result column="book_author" property="bookAuthor"/>
         <result column="book_img" property="bookImg"/>
@@ -19,7 +20,7 @@
     </resultMap>
 
     <sql id="base_column">
-        id, book_name,book_class_id,book_price, book_publish, book_author, book_img, publish_date, tmp1,tmp2,create_date,update_date,valid_flag
+        id, book_name,book_class_id,book_price,book_count, book_publish, book_author, book_img, publish_date, tmp1,tmp2,create_date,update_date,valid_flag
     </sql>
 
     <select id="findListByName" resultMap="BookDTO">
@@ -37,13 +38,25 @@
     </select>
 
     <insert id="insert">
-        INSERT INTO book(book_name,book_class_id,book_price,book_publish,book_author,book_img,publish_date, valid_flag)
+        INSERT INTO book(book_name,book_class_id,book_price,book_count,book_publish,book_author,book_img,publish_date, valid_flag)
         values
-        (#{bookName},#{bookClassId},#{bookPrice},#{bookPublish},#{bookAuthor},#{bookImg},#{publishDate},#{validFlag})
+        (#{bookName},#{bookClassId},#{bookPrice},#{bookCount},#{bookPublish},#{bookAuthor},#{bookImg},#{publishDate},#{validFlag})
     </insert>
 
     <update id="update">
-        UPDATE book set book_name=#{bookName} where id=#{id}
+        UPDATE book
+        <set>
+            <if test="bookName != null">
+                book_name=#{bookName},
+            </if>
+            <if test="updateDate != null">
+                update_date=#{updateDate},
+            </if>
+            <if test="bookCount != null">
+                book_count=#{bookCount},
+            </if>
+        </set>
+        where id=#{id}
     </update>
 
     <delete id="delete">

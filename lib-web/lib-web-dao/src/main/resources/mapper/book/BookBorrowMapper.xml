@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.herb.lib.dao.mapper.borrow.BookBorrowMapper">
+    <resultMap id="BookBorrowDTO" type="com.herb.lib.api.model.borrow.BookBorrowDTO">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="user_name" property="userName"/>
+        <result column="book_id" property="bookId"/>
+        <result column="book_name" property="bookName"/>
+        <result column="count" property="count"/>
+        <result column="start_date" property="startDate"/>
+        <result column="end_date" property="endDate"/>
+        <result column="price" property="price"/>
+        <result column="trade_fee" property="tradeFee"/>
+        <result column="tmp1" property="tmp1"/>
+        <result column="tmp2" property="tmp2"/>
+        <result column="create_date" property="createDate"/>
+        <result column="update_date" property="updateDate"/>
+        <result column="valid_flag" property="validFlag"/>
+    </resultMap>
+
+    <sql id="base_column">
+        id,user_id,user_name,book_id,book_name,count,start_date,end_date,price,trade_fee,tmp1,tmp2,create_date,update_date,valid_flag
+    </sql>
+
+    <insert id="insertBorrow">
+        INSERT INTO book_borrow(user_id,user_name,book_id,book_name,count,start_date,end_date,price,trade_fee,create_date,valid_flag)
+        values
+        (#{userId},#{userName},#{bookId},#{bookName},#{count}, #{startDate},#{endDate},#{price},#{tradeFee},#{createDate},#{validFlag})
+    </insert>
+
+</mapper>
