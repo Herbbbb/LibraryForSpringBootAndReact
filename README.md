@@ -1,5 +1,5 @@
 # LibraryForSpringBootAndReact
-油炸小波前后端分离：springboot + react项目
+前后端分离：springboot + react项目
 # 借书
 
 - 查找全部书籍，根据名称查找书籍(String key)，key是null时候，默认查找全部数据，有值的时候，我们去查找对应名称的书籍
